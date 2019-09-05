@@ -4,7 +4,8 @@ import {
     Image,
     ImageBackground,
     KeyboardAvoidingView,
-    TextInput
+    TextInput,
+    AsyncStorage
 } from 'react-native'
 import backgroundImage from '../../../assets/background.jpg'
 import vetor from '../../../assets/tradeup-icon.png'
@@ -12,7 +13,8 @@ import styles from './Styles'
 import Button from '../../interface/button/Button'
 import {openModal} from '../../store/actions/modal'
 import {connect} from 'react-redux'
-import Modal from '../../interface/modal/Modal'
+import axios from 'axios'
+import { server } from '../../Common'
 
 class Login extends Component {
 
@@ -27,14 +29,24 @@ class Login extends Component {
     }
 
     signin = async () => {
-        this.setState({ loading: true })
         if(this.validateSignIn())
             await this.requestSignIn()
-        this.setState({ loading: false })
     }
 
     requestSignIn = async () => {
-
+        this.setState({ loading: true })
+        try{
+            const res = await axios.post(`${server}/login`, {
+                email: this.state.email,
+                password: this.state.password
+            })
+            AsyncStorage.setItem('token', res.data.token);
+            this.setState({ loading: false })
+            this.props.navigation.navigate('UsersRoute')
+        } catch(err){
+            this.props.openModal(err.responseText, 'error')
+            this.setState({ loading: false })
+        }
     }
 
     validateSignIn = () => {
@@ -77,7 +89,7 @@ class Login extends Component {
                             value={this.state.email} 
                             blurOnSubmit={false}
                             onSubmitEditing={() => {
-
+                                this.passwordInput.focus();
                             }}
                             onChangeText={email => this.setState({ email })}
                         />
@@ -91,6 +103,7 @@ class Login extends Component {
                             value={this.state.password}
                             onSubmitEditing={() => this.signin()}
                             onChangeText={ password => this.setState({ password })} 
+                            ref={(input) => { this.passwordInput = input; }}
                         />
                         {this.state.loading ?
                             <Button 
@@ -106,7 +119,6 @@ class Login extends Component {
                         }
                     </View>
                 </KeyboardAvoidingView>
-                <Modal />
             </ImageBackground>
         )
     }
