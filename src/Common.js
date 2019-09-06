@@ -1,3 +1,5 @@
-const server = 'https://reqres.in/api'
+import {AsyncStorage} from 'react-native'
 
-export { server }
+const api = 'https://reqres.in/api'
+
+export { api }

@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     button: {
         marginTop: 15,
         width: '80%',
-        marginBottom: 25
+        marginBottom: 50
     },
     textbutton: {
         fontSize: 20

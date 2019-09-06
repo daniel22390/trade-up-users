@@ -14,7 +14,7 @@ import Button from '../../interface/button/Button'
 import {openModal} from '../../store/actions/modal'
 import {connect} from 'react-redux'
 import axios from 'axios'
-import { server } from '../../Common'
+import { api } from '../../Common'
 
 class Login extends Component {
 
@@ -22,10 +22,6 @@ class Login extends Component {
         email: '',
         password: '',
         loading: false
-    }
-
-    componentDidMount = async () => {
-        
     }
 
     signin = async () => {
@@ -36,7 +32,7 @@ class Login extends Component {
     requestSignIn = async () => {
         this.setState({ loading: true })
         try{
-            const res = await axios.post(`${server}/login`, {
+            const res = await axios.post(`${api}/login`, {
                 email: this.state.email,
                 password: this.state.password
             })
@@ -44,7 +40,7 @@ class Login extends Component {
             this.setState({ loading: false })
             this.props.navigation.navigate('UsersRoute')
         } catch(err){
-            this.props.openModal(err.responseText, 'error')
+            this.props.openModal(err.message, 'error')
             this.setState({ loading: false })
         }
     }
@@ -52,11 +48,12 @@ class Login extends Component {
     validateSignIn = () => {
         let validations = []
         validations.push({ valid: this.state.email && this.state.email != "", msg: "O campo email é obrigatório!" })
-        validations.push({ valid: this.state.email.includes('@'), msg: "O campo email é inválido!" })
+        validations.push({ valid: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.state.email), msg: "O campo email é inválido!" })
         validations.push({ valid: this.state.password && this.state.password != "", msg: "O campo senha é obrigatório!" })
 
         let msg = ""
         let valid = true
+
         for (i = 0; i < validations.length; i++) {
             if (!validations[i].valid) {
                 valid = false
@@ -75,7 +72,7 @@ class Login extends Component {
         return (
             <ImageBackground source={backgroundImage} style={styles.background}>
                 <KeyboardAvoidingView style={styles.formContainer} behavior="padding" enabled>
-                    <Image source={vetor} />
+                    <Image source={vetor}/>
                     <View style={styles.inputs}>
                         <TextInput 
                             icon='at' 
