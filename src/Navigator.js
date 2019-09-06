@@ -4,12 +4,10 @@ import Login from './screens/login/Login'
 import Users from './screens/users/Users'
 import User from './screens/user/User'
 import RedirectInit from './redirect_init/RedirectInit'
-import HeaderUsers from './screens/users/header/Header'
 
 const UsersNavigation = { 
   Users: {
-    screen: Users,
-    navigationOptions: HeaderUsers,
+    screen: Users
   },
   User: User 
 }

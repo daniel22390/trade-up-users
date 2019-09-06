@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native'
+import { colors } from '../../styles';
 
 
 const styles = StyleSheet.create({
@@ -17,7 +18,10 @@ const styles = StyleSheet.create({
     list: {
         flex: 1,
         marginBottom: 10
-    }
+    },
+    containerHeader: {
+        backgroundColor: colors.primary
+    },
 })
 
 export default styles

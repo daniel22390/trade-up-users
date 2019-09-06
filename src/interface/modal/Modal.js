@@ -11,7 +11,7 @@ import {closeModal} from '../../store/actions/modal'
 import {connect} from 'react-redux'
 import styles from './Styles'
 
-class Alert extends Component {
+class ModalAlert extends Component {
 
   render(){
 
@@ -76,4 +76,4 @@ const mapStateToProps = ({modal}) => {
         open: modal.open
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps) (Alert)
+export default connect(mapStateToProps, mapDispatchToProps) (ModalAlert)
