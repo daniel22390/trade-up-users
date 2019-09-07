@@ -1,7 +1,7 @@
-import {CLOSE_MODAL, OPEN_MODAL} from './actionTypes'
+import { CLOSE_MODAL, OPEN_MODAL } from './actionTypes'
 
 export const openModal = (msg, type) => {
-    return{
+    return {
         type: OPEN_MODAL,
         payload: {
             msg,
@@ -11,7 +11,7 @@ export const openModal = (msg, type) => {
 }
 
 export const closeModal = (msg, type) => {
-    return{
+    return {
         type: CLOSE_MODAL
     }
 }

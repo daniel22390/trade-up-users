@@ -1,7 +1,7 @@
-import {CLOSE_CONFIRMATION, OPEN_CONFIRMATION} from './actionTypes'
+import { CLOSE_CONFIRMATION, OPEN_CONFIRMATION } from './actionTypes'
 
 export const openConfirmation = (msg) => {
-    return{
+    return {
         type: OPEN_CONFIRMATION,
         payload: {
             msg
@@ -10,7 +10,7 @@ export const openConfirmation = (msg) => {
 }
 
 export const closeConfirmation = (msg) => {
-    return{
+    return {
         type: CLOSE_CONFIRMATION
     }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, ActivityIndicator, FlatList, RefreshControl } from 'react-native'
-import styles from './Style'
+import styles from './Styles'
 import colors from '../../styles/Colors'
 import { openModal } from '../../store/actions/modal'
 import { openConfirmation } from '../../store/actions/confirmation'
@@ -71,9 +71,13 @@ class Users extends Component {
                 stopRequest: res.data.total == (this.state.users.length + res.data.data.length) ? true : false
             })
         } catch (err) {
-            this.setState({ loading: true });
+            this.setState({ loading: false });
             this.props.openModal(err.message, 'error')
         }
+    }
+
+    openUser = (user_id) => {
+        this.props.navigation.navigate('User', { user_id })
     }
 
     renderFooter = () => {

@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native'
+import { StyleSheet } from 'react-native'
 
 
 const styles = StyleSheet.create({
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         marginLeft: 10
     },
     image: {
-        width: 70, 
+        width: 70,
         height: 70,
         borderRadius: 35
     },

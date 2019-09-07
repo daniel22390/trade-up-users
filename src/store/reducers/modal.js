@@ -1,4 +1,4 @@
-import {CLOSE_MODAL, OPEN_MODAL} from '../actions/actionTypes'
+import { CLOSE_MODAL, OPEN_MODAL } from '../actions/actionTypes'
 
 const initialState = {
     msg: null,
@@ -7,16 +7,16 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-    switch(action.type){
-        case OPEN_MODAL: 
-            return{
+    switch (action.type) {
+        case OPEN_MODAL:
+            return {
                 ...state,
                 msg: action.payload.msg,
                 type: action.payload.type,
                 open: true,
             }
-        case CLOSE_MODAL: 
-            return{
+        case CLOSE_MODAL:
+            return {
                 ...state,
                 msg: null,
                 type: null,

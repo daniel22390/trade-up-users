@@ -1,4 +1,4 @@
-import {createStore, combineReducers} from 'redux'
+import { createStore, combineReducers } from 'redux'
 import modalReducer from './reducers/modal'
 import confirmationReducer from './reducers/confirmation'
 

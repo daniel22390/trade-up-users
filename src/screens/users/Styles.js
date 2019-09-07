@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native'
+import { StyleSheet } from 'react-native'
 import { colors } from '../../styles';
 
 
@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#dddddd',
     },
     loadingInit: {
-        flex: 1, 
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
     },

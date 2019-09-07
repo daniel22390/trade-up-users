@@ -1,31 +1,31 @@
-import {StyleSheet} from 'react-native'
+import { StyleSheet } from 'react-native'
 
 var styles = StyleSheet.create({
     icone: {
-      marginTop: 10,
-      marginBottom: 10,
-      textAlign: 'center',
-      color: "#3fc3ee"
+        marginTop: 10,
+        marginBottom: 10,
+        textAlign: 'center',
+        color: "#3fc3ee"
     },
     message: {
-      fontSize: 16,
-      textAlign: 'center',
-      marginBottom: 10,
-      marginHorizontal: 10
+        fontSize: 16,
+        textAlign: 'center',
+        marginBottom: 10,
+        marginHorizontal: 10
     },
     container: {
         flexDirection: 'row',
         backgroundColor: 'rgba(0,0,0,0.3)',
     },
     offsetHorizontal: {
-      flex: 1,
+        flex: 1,
     },
     body: {
-      width: '90%',
-      maxWidth: 400,
-      backgroundColor: 'white',
-      justifyContent: 'space-between',
-      borderRadius: 5
+        width: '90%',
+        maxWidth: 400,
+        backgroundColor: 'white',
+        justifyContent: 'space-between',
+        borderRadius: 5
     },
     offset: {
         flex: 1,
@@ -37,7 +37,7 @@ var styles = StyleSheet.create({
         fontSize: 15
     },
     buttonChat: {
-      color: '#03a9f4'
+        color: '#03a9f4'
     },
     header: {
         textAlign: 'center',
@@ -61,6 +61,6 @@ var styles = StyleSheet.create({
         textAlign: 'center',
     }
 })
-  
-  
+
+
 export default styles

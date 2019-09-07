@@ -5,30 +5,32 @@ import Users from './screens/users/Users'
 import User from './screens/user/User'
 import RedirectInit from './redirect_init/RedirectInit'
 
-const UsersNavigation = { 
-  Users: {
-    screen: Users
-  },
-  User: User 
+const UsersNavigation = {
+    Users: {
+        screen: Users
+    },
+    User: {
+        screen: User
+    }
 }
 
 const UsersRoute = createStackNavigator(UsersNavigation);
-const LoginRoute = createStackNavigator({ 
+const LoginRoute = createStackNavigator({
     Login: {
         screen: Login,
         navigationOptions: {
             header: null
         }
-    }   
+    }
 });
 
 export default createAppContainer(createSwitchNavigator(
-  {
-    RedirectInit: RedirectInit,
-    UsersRoute: UsersRoute,
-    LoginRoute: LoginRoute,
-  },
-  {
-    initialRouteName: 'RedirectInit',
-  }
+    {
+        RedirectInit: RedirectInit,
+        UsersRoute: UsersRoute,
+        LoginRoute: LoginRoute,
+    },
+    {
+        initialRouteName: 'RedirectInit',
+    }
 ));

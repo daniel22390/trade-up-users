@@ -11,8 +11,8 @@ import backgroundImage from '../../../assets/background.jpg'
 import vetor from '../../../assets/tradeup-icon.png'
 import styles from './Styles'
 import Button from '../../interface/button/Button'
-import {openModal} from '../../store/actions/modal'
-import {connect} from 'react-redux'
+import { openModal } from '../../store/actions/modal'
+import { connect } from 'react-redux'
 import axios from 'axios'
 import { api } from '../../Common'
 
@@ -25,13 +25,13 @@ class Login extends Component {
     }
 
     signin = async () => {
-        if(this.validateSignIn())
+        if (this.validateSignIn())
             await this.requestSignIn()
     }
 
     requestSignIn = async () => {
         this.setState({ loading: true })
-        try{
+        try {
             const res = await axios.post(`${api}/login`, {
                 email: this.state.email,
                 password: this.state.password
@@ -39,7 +39,7 @@ class Login extends Component {
             AsyncStorage.setItem('token', res.data.token);
             this.setState({ loading: false })
             this.props.navigation.navigate('UsersRoute')
-        } catch(err){
+        } catch (err) {
             this.props.openModal(err.message, 'error')
             this.setState({ loading: false })
         }
@@ -62,7 +62,7 @@ class Login extends Component {
             }
         }
 
-        if(!valid){
+        if (!valid) {
             this.props.openModal(msg, 'error')
         }
         return valid
@@ -72,45 +72,45 @@ class Login extends Component {
         return (
             <ImageBackground source={backgroundImage} style={styles.background}>
                 <KeyboardAvoidingView style={styles.formContainer} behavior="padding" enabled>
-                    <Image source={vetor}/>
+                    <Image source={vetor} />
                     <View style={styles.inputs}>
-                        <TextInput 
-                            icon='at' 
-                            placeholder='Email' 
+                        <TextInput
+                            icon='at'
+                            placeholder='Email'
                             returnKeyType="next"
-                            textContentType="emailAddress" 
-                            keyboardType="email-address" 
+                            textContentType="emailAddress"
+                            keyboardType="email-address"
                             autoCompleteType="email"
                             autoCapitalize="none"
                             style={styles.input}
-                            value={this.state.email} 
+                            value={this.state.email}
                             blurOnSubmit={false}
                             onSubmitEditing={() => {
                                 this.passwordInput.focus();
                             }}
                             onChangeText={email => this.setState({ email })}
                         />
-                        <TextInput 
-                            icon='lock' 
-                            secureTextEntry={true} 
+                        <TextInput
+                            icon='lock'
+                            secureTextEntry={true}
                             returnKeyType="next"
                             autoCapitalize="none"
                             placeholder='Senha'
                             style={styles.input}
                             value={this.state.password}
                             onSubmitEditing={() => this.signin()}
-                            onChangeText={ password => this.setState({ password })} 
+                            onChangeText={password => this.setState({ password })}
                             ref={(input) => { this.passwordInput = input; }}
                         />
                         {this.state.loading ?
-                            <Button 
+                            <Button
                                 loading={true}
                                 styleWrapper={styles.button}
                             />
                             :
-                            <Button 
-                                onPress={this.signin} 
-                                title={'Entrar'} 
+                            <Button
+                                onPress={this.signin}
+                                title={'Entrar'}
                                 styleWrapper={styles.button}
                             />
                         }
@@ -127,6 +127,6 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps) (Login)
+export default connect(null, mapDispatchToProps)(Login)
 
 

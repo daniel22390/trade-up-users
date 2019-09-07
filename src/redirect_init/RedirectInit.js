@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import {
     View,
     AsyncStorage,
@@ -10,21 +10,21 @@ import logo from '../../assets/tradeup-icon.png'
 class RedirectInit extends Component {
 
     constructor() {
-      super();
-      this.verifyToken();
+        super();
+        this.verifyToken();
     }
-  
+
     verifyToken = async () => {
-      const userToken = await AsyncStorage.getItem('token');
-      this.props.navigation.navigate(userToken ? 'UsersRoute' : 'LoginRoute');
+        const userToken = await AsyncStorage.getItem('token');
+        this.props.navigation.navigate(userToken ? 'UsersRoute' : 'LoginRoute');
     };
-  
+
     render() {
-      return (
-        <View style={styles.container}>
-          <Image source={logo}></Image>
-        </View>
-      );
+        return (
+            <View style={styles.container}>
+                <Image source={logo}></Image>
+            </View>
+        );
     }
 }
 
