@@ -3,4 +3,4 @@ Um CRUD com autenticação e duas páginas que exibem os dados providos de uma A
 
 # Users App
 
-! [] (app.gif)
+![Demonstração de uso do App](app.gif)
