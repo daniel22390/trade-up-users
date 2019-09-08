@@ -9,21 +9,21 @@ Um CRUD com autenticação e duas páginas que exibem os dados providos de uma A
 
 O projeto foi criado utilizando-se o Expo CLI. Para usá-lo, utilize o seguinte comando:
 
-`` ``
+```
 npm install -g expo-cli
-`` ``
+```
 
 Agora, basta ir a pasta do projeto e instalar os pacotes e dependências do projeto:
 
-`` ``
+```
 npm install
-`` ``
+```
 
 Para iniciar o servidor de desenvolvimento, utilize o comando abaixo:
 
-`` ``
+```
 npm start
-`` ``
+```
 
 Instale o app Expo no dispositivo móvel de teste, e faça a leitura do QR Code para rodar a aplicação.
 
