@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, ActivityIndicator, FlatList, RefreshControl } from 'react-native'
+import { View, ActivityIndicator, FlatList, RefreshControl, AsyncStorage } from 'react-native'
 import styles from './Styles'
 import colors from '../../styles/Colors'
 import { openModal } from '../../store/actions/modal'
@@ -59,10 +59,12 @@ class Users extends Component {
         if (this.state.loading || this.state.stopRequest) return;
         this.setState({ loading: true });
         try {
+            const token = await AsyncStorage.getItem('token')
             const res = await axios.get(`${api}/users`, {
                 params: {
                     page: this.state.page
-                }
+                },
+                headers: {'Token': token},
             })
             await this.setState({
                 users: [...this.state.users, ...res.data.data],

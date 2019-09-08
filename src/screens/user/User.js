@@ -3,7 +3,8 @@ import {
     View,
     ActivityIndicator,
     Image,
-    ScrollView
+    ScrollView,
+    AsyncStorage
 } from 'react-native'
 import styles from './Styles'
 import colors from '../../styles/Colors'
@@ -27,8 +28,10 @@ class User extends Component {
     getUser = async () => {
         this.setState({ loading: true })
         try {
+            const token = await AsyncStorage.getItem('token')
             const res = await axios.get(`${api}/users/${this.props.navigation.getParam('user_id')}`, {
-                params: {}
+                params: {},
+                headers: {'Token': token},
             })
             await this.setState({
                 user: res.data.data,

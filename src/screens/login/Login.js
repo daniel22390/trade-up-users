@@ -36,7 +36,7 @@ class Login extends Component {
                 email: this.state.email,
                 password: this.state.password
             })
-            AsyncStorage.setItem('token', res.data.token);
+            await AsyncStorage.setItem('token', res.data.token);
             this.setState({ loading: false })
             this.props.navigation.navigate('UsersRoute')
         } catch (err) {
